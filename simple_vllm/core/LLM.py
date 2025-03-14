@@ -1,10 +1,12 @@
 from typing import Union
+import torch
 
 class LLM:
   def __init__(self, model_name : str, tokenizer_name : str) -> None:
     self.model_name = model_name
     self.tokenizer_name = tokenizer_name
-
+    if not torch.cuda.is_available():
+      raise Exception("현재 LLM 클래스는 CUDA 환경에서만 동작합니다.")
 
   def generate(self, prompts : Union[str, list[str]]):
     if not isinstance(prompts, (str, list)):
