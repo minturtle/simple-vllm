@@ -1,4 +1,4 @@
-from simple_vllm.core.LLM import LLM
+from simple_vllm import LLM
 from unittest.mock import patch
 import pytest
 
